@@ -23,11 +23,15 @@
     </tr>
 
     <c:forEach var = "emp" items="${allEmps}">
-        <td>${emp.name}</td>
-        <td>${emp.surname}</td>
-        <td>${emp.birthDay} ${emp.birthMonth}</td>
-        <td>${emp.wishlist}</td>
+        <tr>
+            <td>${emp.name}</td>
+            <td>${emp.surname}</td>
+            <td>${emp.birthDay} ${emp.birthMonth}</td>
+            <td>${emp.wishlist}</td>
+        <tr>
     </c:forEach>
 </table>
+<br>
+<input type="button" value="Add" onclick="window.location.href = 'addNewEmployee'"/>
 </body>
 </html>
