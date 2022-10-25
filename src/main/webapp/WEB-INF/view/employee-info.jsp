@@ -15,6 +15,7 @@
 <h2>Add Employee</h2>
 <br>
 <form:form action="saveNewEmployee" modelAttribute="employee">
+    <form:hidden path="id"/>
     Name <form:input path="name"/>
     <br>
     <br>

@@ -6,10 +6,7 @@ import com.adeanastasia.spring.mvc.wishlist.v1.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,7 @@ public class EmpController {
     @Autowired
     private MainService mainService;
 
+    //@GetMapping
     @RequestMapping("/")
     public String showAllEmployees(Model model) {
 
@@ -26,6 +24,7 @@ public class EmpController {
         return "all-employees";
     }
 
+    //@GetMapping("addNewEmployee")
     @RequestMapping("/addNewEmployee")
     public String addNewEmployee(Model model) {
         Employee employee = new Employee();
@@ -33,9 +32,24 @@ public class EmpController {
         return "employee-info";
     }
 
-    @PostMapping("/saveNewEmployee")
+    //@PostMapping("saveNewEmployee")
+    @RequestMapping("/saveNewEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         mainService.saveEmployee(employee);
+        return "redirect:/";
+    }
+
+    //@GetMapping("updateInfo")
+    @RequestMapping("/updateInfo")
+    public String updateEmployee(@RequestParam("empId") int id, Model model) {
+        Employee employee = mainService.getEmployee(id);
+        model.addAttribute("employee", employee);
+        return "employee-info";
+    }
+
+    @RequestMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam("empId") int id, Model model) {
+        mainService.deleteEmployee(id);
         return "redirect:/";
     }
 }

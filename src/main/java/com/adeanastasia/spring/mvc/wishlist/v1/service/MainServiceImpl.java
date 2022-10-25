@@ -25,4 +25,16 @@ public class MainServiceImpl implements MainService {
     public void saveEmployee(Employee employee) {
         empDAO.saveEmployee(employee);
     }
+
+    @Override
+    @Transactional
+    public Employee getEmployee(int id) {
+        return empDAO.getEmployee(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteEmployee(int id) {
+        empDAO.deleteEmployee(id);
+    }
 }

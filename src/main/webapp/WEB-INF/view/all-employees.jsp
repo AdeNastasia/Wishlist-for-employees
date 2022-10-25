@@ -16,14 +16,31 @@
 <br>
 <table>
     <tr>
+        <th>Operations</th>
         <th>Name</th>
         <th>Surname</th>
         <th>Birthday</th>
         <th>Wishlist</th>
     </tr>
 
-    <c:forEach var = "emp" items="${allEmps}">
+    <c:forEach var="emp" items="${allEmps}">
+
+        <c:url var="updateButton" value="/updateInfo">
+            <c:param name="empId" value="${emp.id}"/>
+        </c:url>
+
+    <c:url var="deleteButton" value="/deleteEmployee">
+        <c:param name="empId" value="${emp.id}"/>
+    </c:url>
+
+
+
         <tr>
+            <td>
+                <input type="button" value="Update" onclick="window.location.href='${updateButton}'">
+
+                <input type="button" value="Delete" onclick="window.location.href='${deleteButton}'">
+            </td>
             <td>${emp.name}</td>
             <td>${emp.surname}</td>
             <td>${emp.birthDay} ${emp.birthMonth}</td>
