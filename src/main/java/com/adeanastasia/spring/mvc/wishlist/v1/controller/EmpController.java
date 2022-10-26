@@ -60,29 +60,6 @@ public class EmpController {
         return "employees-wishes";
     }
 
-    @RequestMapping("/addNewWish")
-    public String addNewWish(@RequestParam("empId") int id, Model model) {
-        Wish wishlist = mainService.getWishListFromEmployee(id);
-        Employee employee = mainService.getEmployee(id);
-        Wish wish = new Wish();
-        employee.setWishlist(wish);
-        mainService.saveEmployee(employee);
-        model.addAttribute("employee", employee);
-        return "wish-info";
-    }
-
-    @RequestMapping("/saveNewWish")
-    public String saveWish(@RequestParam("empId") int id, @RequestParam("empWisp") String wish, Model model) {
-        mainService.saveWishToEmployee(id, wish);
-/*        model.addAttribute("employee", employee);
-        model.addAttribute("wishlist", employee.getWishlist());
-        mainService.saveEmployee(employee);
-        mainService.saveWishToEmployee()*/
-     //saveEmployee(employee); // здесь нужно добавить корректное обновление работника или желание
-
-        return "employees-wishes";
-    }
-
 }
 
 
