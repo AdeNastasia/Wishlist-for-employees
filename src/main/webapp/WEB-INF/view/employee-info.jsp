@@ -16,7 +16,6 @@
 <br>
 <form:form action="saveNewEmployee" modelAttribute="employee">
     <form:hidden path="id"/>
-    <form:hidden path="wish"/> <%--тогда у каждого работника также сразу создастся вишлист --%>
     Name <form:input path="name"/>
     <br>
     <br>
