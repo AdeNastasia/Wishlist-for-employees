@@ -41,15 +41,15 @@
 
         <tr>
             <td>
-                <input type="button" value="Update" onclick="window.location.href='${updateButton}'">
+                <input type="button" value="Update" onclick="window.location.href='${updateButton}'"/>
 
-                <input type="button" value="Delete" onclick="window.location.href='${deleteButton}'">
+                <input type="button" value="Delete" onclick="window.location.href='${deleteButton}'"/>
             </td>
             <td>${emp.name}</td>
             <td>${emp.surname}</td>
             <td>${emp.birthDay} ${emp.birthMonth}</td>
             <td>
-                <input type="button" value="🌟" onclick="window.location.href='${seeEmployeeWishesButton}'">
+                <input type="button" value="🌟" onclick="window.location.href='${seeEmployeeWishesButton}'"/>
             </td>
         <tr>
     </c:forEach>

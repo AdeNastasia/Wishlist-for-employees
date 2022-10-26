@@ -34,8 +34,7 @@ public class Employee {
         this.wishes = wishes;
     }
 
-    @OneToMany(mappedBy = "wish")
-    @JoinColumn(name = "wish_id")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
     private List<Wish> wishes;
 
     @Transient // - нужна ли тут эта аннотация ?

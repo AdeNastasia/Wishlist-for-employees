@@ -19,11 +19,11 @@ public class Wish {
         this.employee = employee;
     }
 
-    @Column(name = "wish")
-    private String wish;
+    @Column(name = "title_of_wish")
+    private String titleOfWish;
 
     @ManyToOne
-    @JoinColumn(name = "wish_id")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     public Wish() {
@@ -37,11 +37,11 @@ public class Wish {
         this.id = id;
     }
 
-    public String getWish() {
-        return wish;
+    public String getTitleOfWish() {
+        return titleOfWish;
     }
 
-    public void setWish(String wish) {
-        this.wish = wish;
+    public void setTitleOfWish(String wish) {
+        this.titleOfWish = wish;
     }
 }
