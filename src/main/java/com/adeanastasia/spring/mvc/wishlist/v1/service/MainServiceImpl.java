@@ -2,6 +2,7 @@ package com.adeanastasia.spring.mvc.wishlist.v1.service;
 
 import com.adeanastasia.spring.mvc.wishlist.v1.dao.EmpDAO;
 import com.adeanastasia.spring.mvc.wishlist.v1.entity.Employee;
+import com.adeanastasia.spring.mvc.wishlist.v1.entity.Wish;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +37,17 @@ public class MainServiceImpl implements MainService {
     @Transactional
     public void deleteEmployee(int id) {
         empDAO.deleteEmployee(id);
+    }
+
+    @Override
+    @Transactional
+    public void saveWishToEmployee(int id, String wish) {
+        empDAO.saveWishToEmployee(id, wish);
+    }
+
+    @Override
+    @Transactional
+    public Wish getWishListFromEmployee(int id) {
+        return empDAO.getWishListFromEmployee(id);
     }
 }

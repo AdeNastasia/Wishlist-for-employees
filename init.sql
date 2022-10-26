@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS db_for_holidays
 
 USE db_for_holidays;
 
-CREATE TABLE wishlist (
+CREATE TABLE wish (
     id INT PRIMARY KEY AUTO_INCREMENT,
     wish VARCHAR(255)
 );
@@ -14,7 +14,7 @@ CREATE TABLE employee (
     surname VARCHAR(25),
     birth_day INT,
     birth_month VARCHAR(10),
-    wishlist_id INT,
-    FOREIGN KEY (wishlist_id) REFERENCES db_for_holidays.wishlist(id)
+    wish_id INT,
+    FOREIGN KEY (wish_id) REFERENCES db_for_holidays.wish(id)
 );
 

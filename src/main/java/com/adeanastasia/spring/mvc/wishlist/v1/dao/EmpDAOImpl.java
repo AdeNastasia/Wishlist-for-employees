@@ -1,12 +1,12 @@
 package com.adeanastasia.spring.mvc.wishlist.v1.dao;
 
 import com.adeanastasia.spring.mvc.wishlist.v1.entity.Employee;
+import com.adeanastasia.spring.mvc.wishlist.v1.entity.Wish;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -40,6 +40,20 @@ public class EmpDAOImpl implements EmpDAO {
         Query<Employee> query = session.createQuery("delete from Employee where id=:employeeId");
         query.setParameter("employeeId", id);
         query.executeUpdate();
+    }
+
+    @Override
+    public void saveWishToEmployee(int id, String wish) {
+        Session session = sessionFactory.getCurrentSession();
+        Employee employee = session.get(Employee.class, id);
+        session.save(wish);
+
+    }
+
+    @Override
+    public Wish getWishListFromEmployee(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Wish.class, id);
     }
 
 

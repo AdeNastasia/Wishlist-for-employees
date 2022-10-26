@@ -1,7 +1,7 @@
 package com.adeanastasia.spring.mvc.wishlist.v1.controller;
 
-import com.adeanastasia.spring.mvc.wishlist.v1.dao.EmpDAO;
 import com.adeanastasia.spring.mvc.wishlist.v1.entity.Employee;
+import com.adeanastasia.spring.mvc.wishlist.v1.entity.Wish;
 import com.adeanastasia.spring.mvc.wishlist.v1.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,4 +52,37 @@ public class EmpController {
         mainService.deleteEmployee(id);
         return "redirect:/";
     }
+
+    @RequestMapping("/wishes")
+    public String showEmployeesWishes(@RequestParam("empId") int id, Model model) {
+        Employee employee = mainService.getEmployee(id);
+        model.addAttribute("employee", employee);
+        return "employees-wishes";
+    }
+
+    @RequestMapping("/addNewWish")
+    public String addNewWish(@RequestParam("empId") int id, Model model) {
+        Wish wishlist = mainService.getWishListFromEmployee(id);
+        Employee employee = mainService.getEmployee(id);
+        Wish wish = new Wish();
+        employee.setWishlist(wish);
+        mainService.saveEmployee(employee);
+        model.addAttribute("employee", employee);
+        return "wish-info";
+    }
+
+    @RequestMapping("/saveNewWish")
+    public String saveWish(@RequestParam("empId") int id, @RequestParam("empWisp") String wish, Model model) {
+        mainService.saveWishToEmployee(id, wish);
+/*        model.addAttribute("employee", employee);
+        model.addAttribute("wishlist", employee.getWishlist());
+        mainService.saveEmployee(employee);
+        mainService.saveWishToEmployee()*/
+     //saveEmployee(employee); // здесь нужно добавить корректное обновление работника или желание
+
+        return "employees-wishes";
+    }
+
 }
+
+

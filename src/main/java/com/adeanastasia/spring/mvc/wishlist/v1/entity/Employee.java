@@ -1,7 +1,9 @@
 package com.adeanastasia.spring.mvc.wishlist.v1.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Entity
@@ -24,9 +26,17 @@ public class Employee {
     @Column(name = "birth_month")
     private String birthMonth;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "wishlist_id")
-    private Wishlist wishlist;
+    public List<Wish> getWishes() {
+        return wishes;
+    }
+
+    public void setWishes(List<Wish> wishes) {
+        this.wishes = wishes;
+    }
+
+    @OneToMany(mappedBy = "wish")
+    @JoinColumn(name = "wish_id")
+    private List<Wish> wishes;
 
     @Transient // - нужна ли тут эта аннотация ?
     private Map<String, String> monthsList; // оставить ли поле статическим?
@@ -112,12 +122,15 @@ public class Employee {
     }
 
 
-    public Wishlist getWishlist() {
-        return wishlist;
-    }
 
-    public void setWishlist(Wishlist wishlist) {
-        this.wishlist = wishlist;
+
+
+    public void addWishToEmployee(Wish wish) {
+        if (wishes == null) {
+            wishes = new ArrayList<>();
+        }
+        wishes.add(wish);
+        wish.setEmployee(this);
     }
 
 }

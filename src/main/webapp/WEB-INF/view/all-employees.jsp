@@ -33,6 +33,10 @@
         <c:param name="empId" value="${emp.id}"/>
     </c:url>
 
+    <c:url var="seeEmployeeWishesButton" value="/wishes">
+        <c:param name="empId" value="${emp.id}"/>
+    </c:url>
+
 
 
         <tr>
@@ -44,7 +48,9 @@
             <td>${emp.name}</td>
             <td>${emp.surname}</td>
             <td>${emp.birthDay} ${emp.birthMonth}</td>
-            <td>${emp.wishlist}</td>
+            <td>
+                <input type="button" value="🌟" onclick="window.location.href='${seeEmployeeWishesButton}'">
+            </td>
         <tr>
     </c:forEach>
 </table>

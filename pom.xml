@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.adeanastasia.spring.mvc</groupId>
-  <artifactId>wishlist-for-employees</artifactId>
+  <artifactId>wish-for-employees</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>wishlist-for-employees Maven Webapp</name>
+  <name>wish-for-employees Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -63,6 +63,6 @@
 
   </dependencies>
   <build>
-    <finalName>wishlist-for-employees</finalName>
+    <finalName>wish-for-employees</finalName>
   </build>
 </project>
